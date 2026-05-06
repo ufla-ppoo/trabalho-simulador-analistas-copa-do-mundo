@@ -118,8 +118,12 @@ public class MainView extends VerticalLayout {
             .setSortable(true)    // permite ordenar pela coluna
             .setAutoWidth(true); // define largura automática
         
-        // Obs.: o encadeamento de chamadas dos dois comandos acima usa o 
-        // Padrão de Projeto Fluent Interface
+        // Obs. 1: o encadeamento de chamadas dos comandos acima usa o 
+        //         padrão de projeto Fluent Interface
+        // Obs. 2: a passagem de referência de método com o operador :: como
+        //         em Estadio::getNome é uma forma concisa de escrever uma 
+        //         função lambda (algo que não é permitido no trabalho, mas 
+        //         será aceito nesse caso para simplificar a implementação)
     }
 
 }

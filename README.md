@@ -102,7 +102,7 @@ src/
 
 - `src/br/ufla/copa/ui/web`
   - Interface web com Vaadin Flow.
-  - Recomendado focar nela apenas depois que a parte de negocio estiver consistente.
+  - Recomendado focar nela apenas depois que a parte de negócio estiver consistente.
   - Altere a classe para representar a tela principal, integrando as funcionalidades já testadas no terminal.
 
 - `src/resources`
@@ -124,14 +124,15 @@ Em outras palavras: ele evita configurações manuais repetitivas.
 
 Voce não precisa aprender Maven para fazer o trabalho, pois ele já está configurado nesse projeto-base.
 
-## Vaadin Flow
+### Vaadin Flow
 
 Vaadin Flow permite criar interface web usando Java (sem precisar escrever front-end em JavaScript, por exemplo).
 
 Neste projeto inicial:
 
 1. A tela web principal está em `ui/web/MainView.java`.
-2. Componentes como `Grid`, `Button` e `TextField` são montados no codigo Java.
+2. Ela traz exemplos de uso de componentes como `Grid`, `Button` e `TextField` montados no código Java.
+3. Você pode alterar totalmente a tela conforme precisar.
 
 ## Checklist das entregas
 
@@ -141,7 +142,7 @@ Neste projeto inicial:
 
 **Histórias de Usuário**
 
-|  Id |  Descrição                                                  |  Respostas        | 
+|  Id |  Descrição                                                  |  Implementada     | 
 |-----|-------------------------------------------------------------|-------------------|
 | H01 | Inicialização da Tabela de Partidas                         | (sim/não/parcial) |
 | H02 | Registro de Palpites                                        | (sim/não/parcial) |

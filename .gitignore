@@ -22,6 +22,7 @@ drivers/
 error-screenshots/
 # Generated theme files that should not be stored
 src/main/frontend/generated/
+frontend/generated/
 
 webpack.generated.js
 .vscode/jetty.pid

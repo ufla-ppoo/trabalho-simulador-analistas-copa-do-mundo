@@ -7,8 +7,18 @@
             "command": "bash",
             "args": [
                 "-lc",
-                "mvn jetty:run & echo $! > .vscode/jetty.pid; wait $!"
+                "./mvnw jetty:run & echo $! > .vscode/jetty.pid; wait $!"
             ],
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-NoProfile",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-Command",
+                    "$proc = Start-Process -FilePath '.\\mvnw.cmd' -ArgumentList 'jetty:run' -PassThru; Set-Content -Path '.vscode\\jetty.pid' -Value $proc.Id; $ready = $false; for ($i = 0; $i -lt 240; $i++) { if ($proc.HasExited) { break }; try { Invoke-WebRequest -Uri 'http://localhost:8080' -UseBasicParsing -TimeoutSec 1 | Out-Null; Write-Output 'JETTY_READY'; $ready = $true; break } catch {}; Start-Sleep -Milliseconds 250 }; if (-not $ready) { if (-not $proc.HasExited) { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue }; throw 'Jetty não iniciou corretamente.' }; Wait-Process -Id $proc.Id"
+                ]
+            },
             "isBackground": true,
             "problemMatcher": {
                 "owner": "jetty",
@@ -18,7 +28,7 @@
                 "background": {
                     "activeOnStart": true,
                     "beginsPattern": ".",
-                    "endsPattern": "Started ServerConnector@.*0.0.0.0:8080|Started Server@"
+                    "endsPattern": "Started ServerConnector@.*0.0.0.0:8080|Started Server@|JETTY_READY"
                 }
             },
             "presentation": {
@@ -33,8 +43,18 @@
             "command": "bash",
             "args": [
                 "-lc",
-                "if [[ -f .vscode/jetty.pid ]]; then kill $(cat .vscode/jetty.pid) 2>/dev/null || true; rm -f .vscode/jetty.pid; fi; pkill -f 'mvn jetty:run' 2>/dev/null || true"
+                "if [[ -f .vscode/jetty.pid ]]; then kill $(cat .vscode/jetty.pid) 2>/dev/null || true; rm -f .vscode/jetty.pid; fi; pkill -f './mvnw jetty:run|mvn jetty:run' 2>/dev/null || true"
             ],
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-NoProfile",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-Command",
+                    "if (Test-Path '.vscode\\jetty.pid') { $jettyPid = Get-Content '.vscode\\jetty.pid'; Stop-Process -Id $jettyPid -Force -ErrorAction SilentlyContinue; Remove-Item '.vscode\\jetty.pid' -Force -ErrorAction SilentlyContinue }; Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'mvnw.cmd jetty:run|mvn jetty:run' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }"
+                ]
+            },
             "problemMatcher": [],
             "presentation": {
                 "reveal": "never",

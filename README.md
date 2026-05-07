@@ -51,7 +51,13 @@ dependências (bibliotecas) necessárias.
 Execute o comando:
 
 ```bash
-mvn jetty:run
+./mvnw jetty:run
+```
+
+No Windows (PowerShell ou Prompt), use:
+
+```powershell
+.\\mvnw.cmd jetty:run
 ```
 
 ## Estrutura de pastas em src

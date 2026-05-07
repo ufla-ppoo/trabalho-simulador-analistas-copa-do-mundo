@@ -39,12 +39,12 @@ Portanto, a recomendação é:
 
 - Pressione `F5`.
 - A configuracao do projeto inicia tanto o terminal quando a parte web de apoio.
-- A interface web é acessível em: `http://localhost:8080`
+- A interface web poderá ser acessada pelo navegador através do endereço: `http://localhost:8080`
   
   (mas como dito anteriormente, você pode ignorar a parte web até a etapa final do trabalho).
 
-Obs.: a primeira execução pode demorar um pouco porque o Maven precisará baixar as 
-dependências (bibliotecas) necessárias.
+**ATENÇÃO**: a primeira execução deve demorar um pouco porque serão baixadas as 
+dependências (bibliotecas) necessárias (e você precisa estar conectado a internet para isso acontecer).
 
 ### Caso queira rodar só a interface web
 

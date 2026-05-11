@@ -9,7 +9,7 @@ public class MainApp {
 
         // O projeto está configurado para que a interface web inicie 
         // automaticamente. Basta acessar o endereço abaixo
-        System.out.println("Acesse a interface web pelo endereço: http://localhost:8080");
+        System.out.println("Acesse a interface web pelo endereco: http://localhost:8080");
 
         // O menu via terminal é executado também em paralelo
         MenuTerminal menu = new MenuTerminal();

@@ -38,7 +38,7 @@ public class MenuTerminal {
         String opcao;
         do {
             // Exibe os estádios
-            System.out.println("Estádios:");
+            System.out.println("Estadios:");
             for (Estadio  estadio : listaEstadios) {
                 System.out.println(estadio.getNome() + " - capacidade: " + estadio.getCapacidade() + " pessoas");
             }

@@ -52,7 +52,7 @@
                     "-ExecutionPolicy",
                     "Bypass",
                     "-Command",
-                    "if (Test-Path \".vscode\\jetty.pid\") { $jettyPid = Get-Content \".vscode\\jetty.pid\"; Stop-Process -Id $jettyPid -Force -ErrorAction SilentlyContinue; Remove-Item \".vscode\\jetty.pid\" -Force -ErrorAction SilentlyContinue }; Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match \"mvnw.cmd jetty:run|mvn jetty:run\" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }"
+                    "if (Test-Path \".vscode\\jetty.pid\") { $jettyPid = Get-Content \".vscode\\jetty.pid\"; Stop-Process -Id $jettyPid -Force -ErrorAction SilentlyContinue; Remove-Item \".vscode\\jetty.pid\" -Force -ErrorAction SilentlyContinue }; Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match '(mvnw\\.cmd|mvn).*jetty:run' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }"
                 ]
             },
             "problemMatcher": [],
